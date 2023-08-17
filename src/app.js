@@ -5,7 +5,8 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const { application } = require('express');
 const cors = require('cors')
-
+require("dotenv").config();
+const { VERCEL_FRONTEND_URL, VITE_FRONTEND_URL } = process.env;
 //MERCADO PAGO
 const paymentRouter = require("./MercadoPago/src/routes/payment.js")
 
@@ -22,7 +23,10 @@ server.use(express.json())
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Origin",
+    `${VERCEL_FRONTEND_URL} || ${VITE_FRONTEND_URL}`
+  ); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');

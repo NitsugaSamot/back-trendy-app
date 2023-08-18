@@ -41,7 +41,7 @@ const createUser = async (req, res) => {
         // console.log(user);
     } catch (error) { 
         console.log(error);
-        res.status(500).json({ error: 'Error when creating the user..' });
+        res.status(500).json({ error:error.message });
     }
 };
 
@@ -106,6 +106,7 @@ const confirmAccount = async (req, res) => {
       userConfirm.confirmated = true;
       userConfirm.token = '';
       await userConfirm.save(); // Gyarda los cambios de token y confirmated
+    //   console.log(userConfirm);
       res.json({ msg: 'Account confirmed successfully' });
     } catch (error) {
       console.log(error);
@@ -181,7 +182,7 @@ const newPassword = async(req, res) => {
 }
 
   
- const getAllUsers = async (req, res) => {
+  getAllUsers = async (req, res) => {
     try {
         const allUsers = await User.findAll();
 

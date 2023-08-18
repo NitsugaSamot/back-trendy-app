@@ -21,7 +21,7 @@ const emailRegister = async (data) => {
   // A continuación, se define un objeto info que contiene la información del correo electrónico a enviar. El correo electrónico incluye un remitente, destinatario, asunto, texto plano y contenido HTML. Se utiliza el enlace ${process.env.FRONTEND_URL}/confirmar/${token} para generar un enlace de confirmación de cuenta en el contenido HTML del correo electrónico. El token se inserta en el enlace y se enviará al usuario para que pueda confirmar su cuenta haciendo clic en él.
 
   const info = await transport.sendMail({
-    from: '"Trendy.Spot - Tienda de ropa" <cuentas@trendy-spot.com>',
+    from: '"Trendy.Spot - Tienda de ropa" <bienvenidoa@trendy-spot.com>',
     to: email,
     subject: "Trendy Spot - Confirma tu cuenta",
     text: "Confirma tu cuenta en Trendy-Spot",

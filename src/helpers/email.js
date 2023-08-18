@@ -9,7 +9,7 @@ const emailRegister = async (data) => {
   const transport = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: process.env.EMAIL_PORT,
-    secure: false,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -28,7 +28,7 @@ const emailRegister = async (data) => {
     html: `<p>Hola: ${name} Confirma tu cuenta en Trendy Spot</p>
                 <p>Tu cuenta ya esta casi lista, solo debes comprobarla en el siguiente enlace</p>
 
-                <a href="${process.env.FRONTEND_URL}/confirm/${token}">Confirmar Cuenta</a>
+                <a href="${process.env.VERCEL_FRONTEND_URL}/confirm/${token}">Confirmar Cuenta</a>
 
                 <p>Si tu no creaste esta cuenta, ignora este mensaje</p>
             `,

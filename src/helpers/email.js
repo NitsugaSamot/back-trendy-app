@@ -58,7 +58,7 @@ const emailForgetPassword = async (data) => {
     text: "Recupera tu cuenta en Trendy-Spot",
     html: `<p>Hola: ${name}, recupera tu cuenta en Trendy Spot</p>
 
-              <a href="${process.env.FRONTEND_URL}/new-password/${token}">Ingresa aqui para reestablecer tu password</a>
+              <a href="${process.env.VERCEL_FRONTEND_URL}/new-password/${token}">Ingresa aqui para reestablecer tu password</a>
 
               <p>Si no solicitaste esta petición ignora este mensaje</p>
           `,

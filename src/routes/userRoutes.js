@@ -10,7 +10,7 @@ const {checkAuth} = require('../middleware/checkAuth')
 
 //Autenticacion , registro y confirmacion de usuarios
  
-router.get('/',getAllUsers)
+router.get('/', getAllUsers)
 router.get('/name',getUserByName)
 
 router.post('/', createUser)

@@ -106,7 +106,6 @@ const confirmAccount = async (req, res) => {
       userConfirm.confirmated = true;
       userConfirm.token = '';
       await userConfirm.save(); // Gyarda los cambios de token y confirmated
-    //   console.log(userConfirm);
       res.json({ msg: 'Account confirmed successfully' });
     } catch (error) {
       console.log(error);
@@ -182,7 +181,7 @@ const newPassword = async(req, res) => {
 }
 
   
-  getAllUsers = async (req, res) => {
+ const getAllUsers = async (req, res) => {
     try {
         const allUsers = await User.findAll();
 

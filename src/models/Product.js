@@ -1,8 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  
-    sequelize.define('product', {
+  const Product = sequelize.define('product', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -31,8 +30,66 @@ module.exports = (sequelize) => {
     stock: {
       type: DataTypes.JSON,
       allowNull: false,
+    },
+    interactions: {
+      type: DataTypes.JSON,
+      defaultValue: [],
     }
   },
-  { timestamps: false }
-  );
+  { timestamps: false });
+
+  // Agregar el método para agregar una consulta a las interacciones del producto
+  Product.prototype.addQuery = function(userId, userName, message) {
+    const query = { id: userId, name: userName, message: message };
+    const interacciones = [...this.interactions, query];
+
+    return this.update({ interactions: interacciones });
+  };
+
+  return Product;
 };
+
+
+// const { DataTypes } = require('sequelize');
+
+// module.exports = (sequelize) => {
+  
+//     sequelize.define('product', {
+//     id: {
+//       type: DataTypes.INTEGER,
+//       autoIncrement: true,
+//       primaryKey: true
+//     },
+//     name: {
+//       type: DataTypes.STRING,
+//       allowNull: false,
+//     },
+//     price: {
+//       type: DataTypes.INTEGER,
+//       allowNull: false,
+//     },  
+//     image: {
+//       type: DataTypes.ARRAY(DataTypes.STRING(500)),
+//       allowNull: false,
+//     },
+//     description: {
+//       type: DataTypes.TEXT,
+//       allowNull: false,
+//     },
+//     productbrand: {
+//       type: DataTypes.STRING,
+//       allowNull: false
+//     },
+//     stock: {
+//       type: DataTypes.JSON,
+//       allowNull: false,
+//     },
+//     interactions: {
+//       type: DataTypes.JSON, // Puedes ajustar el tipo de datos según tus necesidades
+//       defaultValue: [],     // Un arreglo vacío como valor predeterminado
+
+//     }
+//   },
+//   { timestamps: false }
+//   );
+// };

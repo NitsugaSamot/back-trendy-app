@@ -182,13 +182,13 @@ const newPassword = async(req, res) => {
 }
 
   
-  getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
     try {
         const allUsers = await User.findAll();
 
         const users = allUsers.map(user => {
-            const { id, name, email } = user;
-            return { id, name, email };
+            const { id, name, email, token , purchaseOrder} = user;
+            return { id, name, email, token, purchaseOrder };
         });
 
         return res.json(users);
@@ -251,6 +251,8 @@ const profile = async (req, res) => {
 
     res.json(user)
 }
+
+
 
 
  

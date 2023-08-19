@@ -35,6 +35,7 @@ const { Brand, Product } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
+
 Product.belongsTo(Brand, { foreignKey: 'brandId' })
 
 module.exports = {

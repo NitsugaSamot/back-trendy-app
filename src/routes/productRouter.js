@@ -7,6 +7,8 @@ const {filterProductsByPriceRange, filterByBrands, filterProducts} = require('..
 const {getAllBrands} = require('../controllers/brandsControllers/createBrand')
 // const validation = require('../helpers/validation')
 
+const { sendQuery } = require('../controllers/usersControllers/interactionController')
+
 
 
 router.get('/', getAllOrByNameProducts)
@@ -15,6 +17,7 @@ router.get('/search', filterProductsByPriceRange);
 router.get('/brands', getAllBrands);
 router.get('/filter?', filterProducts);
 router.get('/:id', getProductById)
+router.post('/:id/add-query', sendQuery)
 
 router.get('/brands', getAllBrands)
 router.get('/brands/:brandName', filterByBrands);

@@ -28,7 +28,7 @@ const emailRegister = async (data) => {
             <p>Hola: ${name}, confirma tu cuenta en Trendy Spot</p>
                 <p>Tu cuenta ya esta casi lista, solo debes comprobarla haciendo click en el siguiente enlace</p>
 
-                <a href="${process.env.VERCEL_FRONTEND_URL}/login">Confirmar Cuenta</a>
+                <a href="${process.env.VERCEL_FRONTEND_URL}/confirm/${token}">Confirmar Cuenta</a>
 
                 <p>Si tu no reconoces este mail, por favor ignora este mensaje</p>
             `,

@@ -7,12 +7,12 @@ const emailRegister = async (data) => {
 
   // Se crea un objeto transport utilizando nodemailer.createTransport(). Este objeto se configura con los datos de autenticación del servidor de correo electrónico (host, puerto, usuario y contraseña) que se obtienen de las variables de entorno (process.env).
   const transport = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
+    host: `${process.env.EMAIL_HOST}`,
     port: process.env.EMAIL_PORT,
-    secure:true,
+    secure: true,
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: `${process.env.EMAIL_USER}`,
+      pass: `${process.env.EMAIL_PASS}`,
     },
   });
 
@@ -43,7 +43,7 @@ const emailForgetPassword = async (data) => {
   const transport = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: process.env.EMAIL_PORT,
-    secure:true,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,

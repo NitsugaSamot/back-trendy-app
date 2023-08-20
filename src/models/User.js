@@ -32,6 +32,10 @@ module.exports = (sequelize) => {
     confirmated: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+    isDeleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   },
   {

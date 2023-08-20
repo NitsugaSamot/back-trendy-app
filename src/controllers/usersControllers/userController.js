@@ -164,7 +164,7 @@ const newPassword = async (req, res) => {
   }
 };
 
-getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
   try {
     const allUsers = await User.findAll();
 
@@ -220,6 +220,22 @@ const profile = async (req, res) => {
   res.json(user);
 };
 
+const putUserDelete = async (req, res) => {
+  try {
+      const userDeleted = req.body;
+  const { id, isDeleted } = userDeleted
+  const deleted = await User.update({ isDeleted: true },
+      {
+        where: {
+          id: id
+        }
+      })
+  res.status(200).json(deleted)
+  }catch(error){
+      console.log({error: error})
+  }
+}
+
 module.exports = {
   createUser,
   authenticateUser,
@@ -231,4 +247,5 @@ module.exports = {
   getUserByName,
   profile,
   getUserById,
+  putUserDelete
 };

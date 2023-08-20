@@ -2,7 +2,7 @@ const {Router}=require('express')
 
 const router = Router()
 
-const  {users, createUser, authenticateUser, getUserByName, getAllUsers, confirmAccount, resetPassword,  testToken,  newPassword,profile} = require('../controllers/usersControllers/userController')
+const  {users, createUser, authenticateUser, getUserByName, getAllUsers, confirmAccount, resetPassword,  testToken,  newPassword,profile, putUserDelete} = require('../controllers/usersControllers/userController')
 
 const {checkAuth} = require('../middleware/checkAuth')
 
@@ -16,6 +16,7 @@ router.get('/name',getUserByName)
 router.post('/', createUser)
 router.post('/login', authenticateUser)
 router.post('/confirm/:token', confirmAccount)
+router.put('/', putUserDelete)
 
 
 router.post('/reset-password', resetPassword)

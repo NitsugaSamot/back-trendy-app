@@ -64,10 +64,6 @@ const authenticateUser = async (req, res) => {
   //Comprobar su  password mediante bcrypt compare establecito en el modelo User
   const isPasswordCorrect = await user.checkPassword(password);
 
-  //     UPDATE users
-  // SET confirmated = true
-  // WHERE id = tu_id;
-
   //Si la contraseña es correcta, responde con los detalles del usuario y un token JWT generado utilizando generateJWT()
   if (isPasswordCorrect) {
     res.json({

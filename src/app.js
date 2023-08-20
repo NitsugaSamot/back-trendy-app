@@ -15,7 +15,11 @@ require("./db.js");
 const server = express();
 
 server.name = "API";
-server.use(cors());
+app.use(
+  cors({
+    origin: "https://front-trendy-app.vercel.app",
+  })
+);
 
 server.use(express.json());
 // server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));

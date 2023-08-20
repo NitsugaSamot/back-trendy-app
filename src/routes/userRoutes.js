@@ -12,6 +12,8 @@ const  {
     testToken,  
     newPassword,
     profile,
+    updateProfile,
+    updatePassword
     
 } = require('../controllers/usersControllers/userController')
 
@@ -40,6 +42,9 @@ router.route('/reset-password/:token').get(testToken).post(newPassword)
 router.post('/:id/purchases', savePurchases)
 
 router.get('/profile', checkAuth, profile)
+router.put('/profile/:id', checkAuth, updateProfile)
+router.put('/update-password', checkAuth, updatePassword)
+
 
 
 

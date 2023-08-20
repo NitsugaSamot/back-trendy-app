@@ -181,7 +181,57 @@ const newPassword = async(req, res) => {
 
 }
 
-  
+const updateProfile = async (req, res) => {
+    const user = await User.findByPk(req.params.id)
+
+    if(!user) {
+        const error = new Error('error')
+        return res.status(400).json({msg: error.message})
+    }
+
+    const {email} = req.body
+
+    if(user.email !== req.body.email) {
+        const existingEmail = await User.findOne({ where: { email } })
+        if(existingEmail) {
+            const error = new Error('There is already a registered user with this email')
+            return res.status(400).json({msg: error.message})
+        }
+    }
+
+    try {
+        user.name = req.body.name
+        user.email = req.body.email
+
+        const updateUser = await user.save()
+        res.json(updateUser)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const updatePassword = async (req, res) => {
+    const {id} = req.user
+    const {pwd_curr, pwd_new} = req.body
+
+    const user = await User.findByPk(id)
+
+    if(!user) {
+        const error = new Error('Hubo un error')
+        return res.status(400).json({msg: error.message})
+    }
+
+    if(await user.checkPassword(pwd_curr)) {
+        user.password = pwd_new
+        await user.save()
+        res.json({msg: 'Password updated correctly'})
+    }else{
+        const error = new Error('The current password is incorrect');
+        return res.status(403).json({ msg: error.message });
+    }
+    
+}
+
 const getAllUsers = async (req, res) => {
     try {
         const allUsers = await User.findAll();
@@ -256,7 +306,7 @@ const profile = async (req, res) => {
 
 
  
-module.exports = { createUser, authenticateUser, confirmAccount, resetPassword , testToken, newPassword ,getAllUsers ,getUserByName, profile, getUserById }  
+module.exports = { createUser, authenticateUser, confirmAccount, resetPassword , testToken, newPassword , updateProfile  , updatePassword  ,getAllUsers ,getUserByName, profile, getUserById }  
 // const{ User} = require('../../db')
 // const {generateToken} = require('../../helpers/generateToken')
 // const { Op } = require("sequelize");

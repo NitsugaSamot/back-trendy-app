@@ -3,7 +3,6 @@ const { Op } = require("sequelize");
 const { generateToken } = require("../../helpers/generateToken");
 const { generateJWT } = require("../../helpers/generateJWT");
 const { emailRegister, emailForgetPassword } = require("../../helpers/email");
-const { use } = require("chai");
 
 const createUser = async (req, res) => {
   try {

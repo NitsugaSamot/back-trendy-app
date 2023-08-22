@@ -31,6 +31,10 @@ module.exports = (sequelize) => {
     stock: {
       type: DataTypes.JSON,
       allowNull: false,
+    },
+    ratings: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      allowNull: true,
     }
   },
   { timestamps: false }

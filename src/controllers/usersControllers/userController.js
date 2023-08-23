@@ -213,6 +213,7 @@ const getUserById = async (req, res) => {
           id: userData.id,
           name: userData.name,
           email: userData.email,
+          type: userData.type,
           purchaseOrder: userData.purchaseOrder
       };
 

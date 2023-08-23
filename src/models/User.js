@@ -36,11 +36,22 @@ module.exports = (sequelize) => {
     isDeleted: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
-    }
+    },
+    purchaseOrder: {
+      type: DataTypes.JSON,
+      defaultValue:[],
+    },
   },
   {
     timestamps: false
   });
+
+  User.prototype.addBuy = function(id, name, price,quantity, description, rating ) {
+    const buys = { id:id, title: name, unit_price: price,  quantity: quantity,  description: description, rating: rating};
+    const purchases = [...this.purchaseOrder, buys];
+
+    return this.update({ purchaseOrder: purchases });
+  };
 
   // Antes de crear o actualizar un usuario, vamos a hashear su contraseña
   User.beforeCreate(async (user) => {

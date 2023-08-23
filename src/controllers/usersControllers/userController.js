@@ -201,15 +201,25 @@ const getUserByName = async (req, res) => {
 const getUserById = async (req, res) => {
   const { id } = req.params;
 
-  const userData = await User.findOne({ where: { id } });
+  try {
+      const userData = await User.findByPk(id);
 
-  const user = {
-    id: userData.id,
-    name: userData.name,
-    email: userData.name,
-  };
+      if (!userData) {
+          return res.status(404).json({ message: "Usuario no encontrado" });
+      }
 
-  return res.json(user);
+      console.log(userData.purchaseOrder);
+      const user = {
+          id: userData.id,
+          name: userData.name,
+          email: userData.email,
+          purchaseOrder: userData.purchaseOrder
+      };
+
+      return res.json(user);
+  } catch (error) {
+      return res.status(500).json({ message: "Error al buscar el usuario", error: error.message });
+  }
 };
 
 const profile = async (req, res) => {

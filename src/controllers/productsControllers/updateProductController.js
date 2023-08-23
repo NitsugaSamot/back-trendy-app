@@ -2,7 +2,6 @@ const { Product } = require("../../db");
 
 const updateProductController = async (product) => {
     const { id, name, price, description, brand, stock } = product;
-
     try {
         await Product.update({
             name: name,

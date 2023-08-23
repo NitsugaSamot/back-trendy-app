@@ -6,7 +6,7 @@ const  {users, createUser, authenticateUser, getUserByName, getAllUsers, confirm
 
 const {checkAuth} = require('../middleware/checkAuth')
 const setTrueRating = require('../controllers/usersControllers/setTrue')
-const { savePurchases } = require('../controllers/usersControllers/purchasesController')
+const { savePurchases , getMyPurchases } = require('../controllers/usersControllers/purchasesController')
 
 
 
@@ -25,6 +25,7 @@ router.put('/ratingTrue', setTrueRating)
 
 router.post('/reset-password', resetPassword)
 router.route('/reset-password/:token').get(testToken).post(newPassword)
+router.get('/:id/purchases', getMyPurchases);
 router.post('/:id/purchases', savePurchases)
 
 router.get('/profile', checkAuth, profile)

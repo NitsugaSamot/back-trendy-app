@@ -2,7 +2,7 @@ const {Router}=require('express')
 
 const router = Router()
 
-const  {users, createUser, authenticateUser, getUserByName, getAllUsers, confirmAccount, resetPassword,  testToken,  newPassword,profile, putUserDelete, getUserById} = require('../controllers/usersControllers/userController')
+const  {users, createUser, authenticateUser, getUserByName, getAllUsers, confirmAccount, resetPassword,  testToken,  newPassword,profile, putUserDelete, getUserById, updateProfile, updatePassword} = require('../controllers/usersControllers/userController')
 
 const {checkAuth} = require('../middleware/checkAuth')
 const setTrueRating = require('../controllers/usersControllers/setTrue')
@@ -28,6 +28,8 @@ router.route('/reset-password/:token').get(testToken).post(newPassword)
 router.post('/:id/purchases', savePurchases)
 
 router.get('/profile', checkAuth, profile)
+router.put('/profile/:id', checkAuth, updateProfile)
+router.put('/update-password', checkAuth, updatePassword)
 
 router.put('/', )
 

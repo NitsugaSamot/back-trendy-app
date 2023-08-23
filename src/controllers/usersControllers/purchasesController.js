@@ -23,6 +23,22 @@ const savePurchases = async (req, res) => {
 
 }
 
+const getMyPurchases = async (req, res) => {
+    const { id } = req.params;
+
+    const user = await User.findByPk(id); 
+    if (!user) {
+        return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    const purchaseOrders = user.purchaseOrder;
+
+    return res.status(200).json(purchaseOrders)
+
+
+}
+
 module.exports = {
-    savePurchases
+    savePurchases,
+    getMyPurchases
 }

@@ -7,7 +7,7 @@ const { emailRegister, emailForgetPassword } = require("../../helpers/email");
 const createUser = async (req, res) => {
   try {
     //Datos necesarios para el registro
-    const { name, email, password } = req.body;
+    const { name, email, password, type } = req.body;
 
     // Verificar si el usuario ya existe por su email
     const existingUser = await User.findOne({ where: { email } });
@@ -22,6 +22,7 @@ const createUser = async (req, res) => {
       name,
       email,
       password,
+      type,
       token: generateToken(),
     });
 

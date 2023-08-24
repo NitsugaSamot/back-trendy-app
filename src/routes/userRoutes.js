@@ -6,7 +6,7 @@ const  {users, createUser, authenticateUser, getUserByName, getAllUsers, confirm
 
 const {checkAuth} = require('../middleware/checkAuth')
 const setTrueRating = require('../controllers/usersControllers/setTrue')
-const { savePurchases , getMyPurchases } = require('../controllers/usersControllers/purchasesController')
+const { savePurchases , getMyPurchases, getAllPurchases } = require('../controllers/usersControllers/purchasesController')
 
 
 
@@ -31,7 +31,7 @@ router.post('/:id/purchases', savePurchases)
 router.get('/profile', checkAuth, profile)
 router.put('/profile/:id', checkAuth, updateProfile)
 router.put('/update-password', checkAuth, updatePassword)
-
+router.get('/all-purchases', getAllPurchases)
 router.put('/', )
 
 router.delete('/', )

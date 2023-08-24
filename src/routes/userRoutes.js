@@ -13,8 +13,8 @@ const { savePurchases , getMyPurchases, getAllPurchases } = require('../controll
 //Autenticacion , registro y confirmacion de usuarios
  
 router.get('/', getAllUsers)
-
 router.get('/name',getUserByName)
+router.get('/all-purchases', getAllPurchases)
 router.get("/:id", getUserById)
 
 router.post('/', createUser)
@@ -32,7 +32,7 @@ router.post('/:id/purchases', savePurchases)
 router.get('/profile', checkAuth, profile)
 router.put('/profile/:id', checkAuth, updateProfile)
 router.put('/update-password', checkAuth, updatePassword)
-router.get('/all-purchases', getAllPurchases)
+
 router.put('/', )
 
 router.delete('/', )

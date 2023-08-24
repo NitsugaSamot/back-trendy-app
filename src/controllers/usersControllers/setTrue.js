@@ -14,7 +14,7 @@ const setTrueRating = async (req, res) => {
       if (product.id === idProduct) {
         return {
           ...product,
-          rating: false
+          rating: true
         };
       }
       return product;
@@ -23,7 +23,7 @@ const setTrueRating = async (req, res) => {
     user.purchaseOrder = updatedProducts
     await user.save();
 
-    res.status(200).json({ message: 'Rating actualizado con éxito' });
+    res.status(200).json({updatedProducts});
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

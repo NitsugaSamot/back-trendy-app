@@ -169,8 +169,8 @@ const getAllUsers = async (req, res) => {
     const allUsers = await User.findAll();
 
     const users = allUsers.map((user) => {
-      const { id, name, email } = user;
-      return { id, name, email };
+      const { id, name, email, confirmated, isDeleted } = user;
+      return { id, name, email, confirmated, isDeleted };
     });
 
     return res.json(users);

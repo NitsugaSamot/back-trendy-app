@@ -32,7 +32,6 @@ router.post('/:id/purchases', savePurchases)
 router.get('/profile', checkAuth, profile)
 router.put('/profile/:id', checkAuth, updateProfile)
 router.put('/update-password', checkAuth, updatePassword)
-router.get('/all-purchases', getAllPurchases)
 router.put('/', )
 
 router.delete('/', )

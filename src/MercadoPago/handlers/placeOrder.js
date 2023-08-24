@@ -27,9 +27,9 @@ const placeOrder = async (req, res) => {
       		],
       // URLs de redirección después del pago (éxito, fallo y pendiente)
       back_urls: {
-        success: 'http://localhost:5173/confirmation', // URL en caso de éxito
-        failure: 'http://localhost:5173', // URL en caso de fallo
-        pending: 'http://localhost:3004' // URL en caso de pendiente
+        success: 'https://front-trendy-app.vercel.app/confirmation', // URL en caso de éxito
+        failure: 'https://front-trendy-app.vercel.app', // URL en caso de fallo
+        pending: 'https://front-trendy-app.vercel.app' // URL en caso de pendiente
       }
       //*Forma que aparece en la api de mercado pago
       // auto_return "approved"

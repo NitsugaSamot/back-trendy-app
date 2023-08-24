@@ -38,7 +38,28 @@ const getMyPurchases = async (req, res) => {
 
 }
 
+const getAllPurchases = async (req, res) => {
+    try {
+        const allUsers = await User.findAll();
+
+        const allPurchasesWithUser = allUsers.flatMap(user => {
+            return user.purchaseOrder.map(purchase => ({
+                userId: user.id,
+                userName: user.name,
+                userEmail: user.email,
+                purchaseDetails: purchase
+            }));
+        });
+
+        return res.status(200).json(allPurchasesWithUser);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error interno del servidor" });
+    }
+};
+
 module.exports = {
     savePurchases,
-    getMyPurchases
+    getMyPurchases,
+    getAllPurchases
 }

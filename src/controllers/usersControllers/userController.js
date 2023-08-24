@@ -71,6 +71,7 @@ const authenticateUser = async (req, res) => {
       name: user.name,
       email: user.email,
       token: generateJWT(user.id),
+      isDeleted: user.isDeleted
     });
   } else {
     const error = new Error("Incorrect password");

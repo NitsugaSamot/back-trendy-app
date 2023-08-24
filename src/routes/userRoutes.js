@@ -6,13 +6,14 @@ const  {users, createUser, authenticateUser, getUserByName, getAllUsers, confirm
 
 const {checkAuth} = require('../middleware/checkAuth')
 const setTrueRating = require('../controllers/usersControllers/setTrue')
-const { savePurchases , getMyPurchases } = require('../controllers/usersControllers/purchasesController')
+const { savePurchases , getMyPurchases, getAllPurchases } = require('../controllers/usersControllers/purchasesController')
 
 
 
 //Autenticacion , registro y confirmacion de usuarios
  
 router.get('/', getAllUsers)
+router.get('/all-purchases', getAllPurchases)
 router.get('/name',getUserByName)
 router.get("/:id", getUserById)
 

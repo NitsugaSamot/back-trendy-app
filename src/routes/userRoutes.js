@@ -13,6 +13,7 @@ const { savePurchases , getMyPurchases, getAllPurchases } = require('../controll
 //Autenticacion , registro y confirmacion de usuarios
  
 router.get('/', getAllUsers)
+router.get('/all-purchases', getAllPurchases)
 router.get('/name',getUserByName)
 router.get("/:id", getUserById)
 

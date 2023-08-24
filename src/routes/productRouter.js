@@ -6,7 +6,7 @@ const { getAllOrByNameProducts, getProductById } = require('../handlers/product/
 const {filterProductsByPriceRange, filterByBrands, filterProducts} = require('../controllers/productsControllers/filterProducts')
 const {getAllBrands} = require('../controllers/brandsControllers/createBrand');
 const updateProduct = require('../handlers/product/updateProductHandler');
-// const validation = require('../helpers/validation')
+const ratingHandler = require('../handlers/product/ratingHandler');
 
 
 
@@ -20,7 +20,7 @@ router.put('/updateProduct', updateProduct)
 
 router.get('/brands', getAllBrands)
 router.get('/brands/:brandName', filterByBrands);
-
+router.post("/rating", ratingHandler)
 router.post('/create', newProductHandler)
 
 module.exports = router

@@ -1,2 +1,9 @@
 .env
 node_modules/
+Henry/
+Letras/
+Libros/
+Mis Documentos/
+Proyectos/
+Temas/
+*.lnk
